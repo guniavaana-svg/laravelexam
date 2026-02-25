@@ -1,8 +1,19 @@
 <!-- Navigation-->
     <nav class="navbar navbar-light bg-light static-top">
+        
         <div class="container">
-            <a class="navbar-brand" href="#!">Start Bootstrap</a>
-            <a class="btn btn-primary" href="#signup">Sign Up</a>
+             <a class="navbar-brand" href="{{ route('front.home') }}">Start Bootstrap</a>
+            <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                <ul class="list-inline mb-2">
+                    <li class="list-inline-item"><a href="#!">About</a></li>
+                    <li class="list-inline-item"><a href="#!">Contact</a></li>
+                    <li class="list-inline-item"><a href="{{ route('front.clients.index') }}">clients/users</a></li>
+                    <li class="list-inline-item"><a href="{{ route('front.posts.index') }}">posts</a></li>
+                    
+
+                </ul>
+            </div>
+            <a class="btn btn-primary" href="#signup">go to dashboard</a>
         </div>
     </nav>
     <!-- Masthead-->

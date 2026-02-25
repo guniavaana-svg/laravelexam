@@ -1,17 +1,40 @@
 @extends('layouts.app')
-
-
 @section('content')
+<div class="container my-5">
     <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <a href="{{route('front.posts.show',$post->id)}}"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                <div class="card-body">
-                    <div class="small text-muted">{{$post->created_at->format('M d')}}</div>
-                    <h2 class="card-title h4">{{$post->title}}</h2>
-                    <p class="card-text">{{$post->description}}</p>
+        <div class="col-12 mb-4">
+            <h1 class="display-4">{{ $post->title }}</h1>
+            <p class="text-muted">Category: {{ $post->category->name }}</p>
+        </div>
+
+        <!-- სურათები carousel ან row-ში -->
+        @if($post->images->count() > 0)
+            <div id="postImagesCarousel" class="carousel slide col-12 mb-4" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach($post->images as $key => $image)
+                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                            <img src="{{ asset('storage/images/' . $image->name) }}" class="d-block w-100" alt="Image {{ $key+1 }}">
+                        </div>
+                    @endforeach
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#postImagesCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#postImagesCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
+        @endif
+
+        <div class="col-12">
+            <p class="lead">{{ $post->description }}</p>
+        </div>
+
+        <div class="col-12 mt-4">
+            <a href="{{ route('front.posts.index') }}" class="btn btn-secondary">Back to Posts</a>
         </div>
     </div>
+</div>
 @endsection

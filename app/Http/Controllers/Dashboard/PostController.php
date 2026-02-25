@@ -99,10 +99,13 @@ class PostController extends Controller
     public function edit(int $id)
     {
         $post = Post::query()->findOrFail($id);
-        $selectedCategories=$post->categories()->select('id')->get()->pluck('id')->toArray();
+        // $selectedCategories=$post->categories()->select('id')->get()->pluck('id')->toArray();
+        $selectedCategories=[$post->category_id];
         return view('dashboard.posts.edit',[
             'post' => $post,
-            'categories'=>Category::query()->get(),
+            
+            // 'categories'=>Category::query()->get(),
+            'categories' => Category::all(),
             'selectedCategories'=>$selectedCategories,
         ]);
 
@@ -121,8 +124,9 @@ class PostController extends Controller
             $post->title=$request->title;
             $post->description=$request->description;
             if($post->save()){
-                $post->categories()->sync($request->category_id);
-
+                // $post->categories()->sync($request->category_id);
+                $post->category_id = $request->category_id[0];
+                $post->save();
             }
 
             DB::commit();

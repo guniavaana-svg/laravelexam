@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 @include('front.components.services')
 @include('front.components.posts')

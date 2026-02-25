@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('post_id');
             $table->string('name');
+            $table->integer('sort')->default(1);
             $table->timestamps();
         });
     }

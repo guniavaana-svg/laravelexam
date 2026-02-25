@@ -12,12 +12,22 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('front.pages.posts.index',[
-            'title'=>'posts',
-            'posts'=>Post::query()->with('images')->latest()->get(),
+        // return view('front.pages.posts.index',[
+        //     'title'=>'posts',
+        //     'posts'=>Post::query()->with('images')->latest()->get(),
 
 
-        ]);
+        // ]);
+        $posts = Post::with(['images', 'category'])->latest()->get();
+
+            return view('front.pages.posts.index', [
+                'title' => 'posts',
+                'posts' => $posts,
+            ]);
+
+
+
+
     }
 
     /**
@@ -41,11 +51,17 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $post=Post::findOrFail($id);
-        return view('front.pages.posts.show',[
-            'title'=>$post->title,
-            'post'=>$post
-        ]);
+        // $post=Post::findOrFail($id);
+        // return view('front.pages.posts.show',[
+        //     'title'=>$post->title,
+        //     'post'=>$post
+        // ]);
+    $post = Post::with(['images', 'category'])->findOrFail($id);
+    return view('front.pages.posts.show', [
+        'title' => $post->title,
+        'post' => $post
+    ]);
+
     }
 
     /**

@@ -1,4 +1,4 @@
-  @extends('app')
+  @extends('layouts.app')
     @section('content')
         <!-- servises.blade.php-->
         <section class="features-icons bg-light text-center">

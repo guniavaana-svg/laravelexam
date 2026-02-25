@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Dashboard\PostController as DashboardPostController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PostController;
 
 class PageController extends Controller
 {
     //ვქმნით ფუნქციას
+    
     public function home(){
          return view('front.pages.home.index',[
-            'title'=>'home'
+            'title'=>'home',
          ]);
     }
     public function about(){

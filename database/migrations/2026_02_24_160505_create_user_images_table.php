@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('user_images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('client_id');
             $table->string('name');
+            $table->integer('sort')->default(1);
             $table->timestamps();
         });
     }

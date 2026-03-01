@@ -4,9 +4,21 @@
 <div class="container my-5">
     <h1>{{ $client->name }} {{ $client->lastname }}</h1>
 
-    @if($client->images->count())
-        <img src="{{ asset('storage/' . $client->images->first()->filename) }}" class="img-fluid mb-3" alt="{{ $client->name }}">
-    @endif
+    <!-- ფოტო არ ჩანს -->
+    <!-- რატომ იძახებ images->first() როცა image რელაცია გაქვს მოდელზე??? -->
+    <!-- @if($client->images->count())
+        <img src="{{ asset('storage/images/' . $client->images->first()->filename) }}" class="img-fluid mb-3" alt="{{ $client->name }}">
+    @endif -->
+
+    <!-- როცა ბევრი ფოტო გინდა დამოიტანო foreach უნდა გააკეთო -->
+
+    @foreach($client->images as $image)
+        <img src="{{ asset('storage/images/' . $image->name) }}" class="img-fluid mb-3" alt="{{ $client->name }}">
+    @endforeach
+
+    <!-- @if($client->images->count())
+        <img src="{{ asset('storage/images/' . $client->images->first()->filename) }}" class="img-fluid mb-3" alt="{{ $client->name }}">
+    @endif -->
 
     <p>{{ $client->description }}</p>
 

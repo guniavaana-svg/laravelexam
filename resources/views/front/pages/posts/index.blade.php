@@ -2,6 +2,9 @@
 @section('content')
     <section class="showcase">
     <div class="container-fluid p-0">
+        <!-- php რაში დაგჭირდა?  -->
+
+        <!-- ფოტოების ამბავი დაგიწერე კლიენტზე აქაც იგივე შეცდომა გაქვს !! -->
         @foreach($posts as $index => $post)
             @php
                 // ბექგრაუნდისთვის სურათის URL
@@ -10,9 +13,11 @@
                 $orderClass = $index % 2 == 0 ? true : false;
             @endphp
 
+            <!-- $orderClass ცვლადი არ გჭირდება საერთოდ -->
             <div class="row g-0">
-                <div class="col-lg-6 {{ $orderClass ? 'order-lg-2' : '' }} text-white showcase-img" 
-                     style="background-image: url('{{ $bgImage }}'); background-size: cover; background-position: center; min-height: 300px;">
+                <!-- <div class="col-lg-6 {{ $orderClass ? 'order-lg-2' : '' }} text-white showcase-img"  -->
+                <div class="col-lg-6 {{ $index % 2 == 0 ? 'order-lg-2' : '' }} text-white showcase-img" 
+                style="background-image: url('{{ $bgImage }}'); background-size: cover; background-position: center; min-height: 300px;">
                 </div>
                 <div class="col-lg-6 {{ $orderClass ? '' : 'order-lg-1' }} my-auto showcase-text p-4">
                     <h2>{{ $post->title }}</h2>

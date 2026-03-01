@@ -16,6 +16,8 @@ use mysql_xdevapi\Result;
 use Throwable;
 
 
+// CatrgoryController-ში დაგიწერე შენიშვნები აქაც იგივეა, 
+
 class PostController extends Controller
 {
     /**
@@ -96,6 +98,8 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    // ფოტოს რედაქტირება არ გაქვს
+    // რომ მომინდეს რა ვქნა??? :))
     public function edit(int $id)
     {
         $post = Post::query()->findOrFail($id);

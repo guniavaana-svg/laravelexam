@@ -9,8 +9,14 @@
             @foreach($clients as $client)
                 <div class="col-lg-4">
                     <div class="client-item mx-auto mb-5 mb-lg-0 shadow-sm p-3 rounded bg-white">
-                        @if($client->images->first())
-                            <img class="img-fluid rounded-circle mb-3" src="{{ asset('storage/images/' . $client->images->first()->name) }}" alt="{{ $client->name }}" />
+
+                        <!-- რატომ იძახებ images->first() როცა image რელაცია გაქვს მოდელზე??? -->
+                         <!-- asset არ გამოყენო არასდროს !!! -->
+                          <!-- filename column არ გაქვს ბაზაში -->
+                           <!-- ფოტოს არ გმოიოტანდა არასდროს -->
+                        @if($client->image)
+                            <!-- <img class="img-fluid rounded-circle mb-3" src="{{ 'storage/images/'.$client->image->filename }}" alt="{{ $client->name }}" /> -->
+                            <img class="img-fluid rounded-circle mb-3" src="{{ 'storage/images/'.$client->image->name }}" alt="{{ $client->name }}" />
                         @else
                             <img class="img-fluid rounded-circle mb-3" src="{{ asset('front/assets/img/default-user.png') }}" alt="{{ $client->name }}" />
                         @endif

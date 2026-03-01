@@ -19,7 +19,12 @@ Route::name('dashboard.')->prefix('dashboard')->middleware('auth')->group(callba
         Route::put('/{id}',[PostController::class,"update"])->name ('update');
         Route::delete('/{id}',[PostController::class,"destroy"])->name ('destroy');
     });
-     Route::name('clients.')->prefix('clients')->group(function (){
+
+    // ეს იგივე Users არის,
+    // შევქმენი კლიენტი და რაც დავინახე ნეტა არ დამენახა :)) 
+    // პაროლი რატომ გაქვს გამოტანილი? :))
+    // დაჰეშილი მაგრამ მაინც
+    Route::name('clients.')->prefix('clients')->group(function (){
         Route::get('/',[ClientController::class,"index"])->name ('index');
         Route::get('/create',[ClientController::class,"create"])->name ('create');
         Route::post('/',[ClientController::class,"store"])->name ('store');

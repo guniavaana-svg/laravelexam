@@ -14,6 +14,8 @@ use mysql_xdevapi\Result;
 use Throwable;
 use Illuminate\Support\Facades\Hash;
 
+// CatrgoryController-ში დაგიწერე შენიშვნები აქაც იგივეა, 
+
 class ClientController extends Controller
 {
     /**
